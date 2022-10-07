@@ -1,52 +1,46 @@
 <template>
   <section class="container">
-    <h2>{{ user.name }}</h2>
-    <h2>{{ user.age }}</h2>
+    <h2>{{ username }}</h2>
+    <h2>{{ age }}</h2>
+    <button @click="setAge">Change Age</button>
   </section>
 </template>
 
 <script>
-import { reactive } from 'vue';
-// import { ref } from 'vue';
+// import { reactive } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
-    // const uName = ref('Maximilian');
-    // const uAge = ref(31);
-
-    // Here is the example using ref for an object
-    // const user = ref({
+    const uName = ref('Maximilian');
+    const uAge = ref(31);
+    // const user = reactive({
     //   name: 'Maximilian',
     //   age: 31,
     // });
-    // Now using reactive that only receives as parameter objects:
-    const user = reactive({
-      name: 'Maximilian',
-      age: 31,
-    });
 
-    console.log(user);
-
-    setTimeout(function () {
-      // uName.value = 'Max';
-      // uAge.value = 32;
-      // When using ref, properties of an object must be access via "value" property.
-      // user.value.name = 'Max';
-      // user.value.age = 32;
-      // In contrast to when using ref, reactive allows to access directly to the fields of the object:
-      user.value = 'Max';
-      user.value = 32;
-    }, 2000);
+    function setNewAge() {
+      // user.age = 32;
+      uAge.value = 32;
+    }
 
     return {
-      user: user,
+      // user: user,
+      username: uName,
+      age: uAge,
+      setAge: setNewAge,
     };
   },
   // data() {
   //   return {
   //     userName: 'Maximilian',
+  //     age: 31,
   //   };
   // },
+  // methods:{
+  //   setAge(){
+  //     this.age = 33;
+  //   }
 };
 </script>
 
