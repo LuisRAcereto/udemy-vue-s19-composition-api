@@ -1,10 +1,6 @@
 <template>
   <section class="container">
-    <user-data
-      :firstName="firstName"
-      :lastName="lastName"
-      :age="age"
-    ></user-data>
+    <user-data :firstName="firstName" :lastName="lastName"></user-data>
     <button @click="setAge">Change Age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
@@ -16,7 +12,7 @@
 
 <script>
 // import { reactive } from 'vue';
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, provide } from 'vue';
 import UserData from './components/UserData.vue';
 
 export default {
@@ -33,6 +29,8 @@ export default {
     //   name: 'Maximilian',
     //   age: 31,
     // });
+
+    provide('userAge', uAge);
 
     // this must be imported from vue library and implements a computed property.
     // just
@@ -83,7 +81,10 @@ export default {
   // methods:{
   //   setAge(){
   //     this.age = 33;
-  //   }
+  //   },
+  // provide() {
+  //     return { age: this.age };
+  // }
 };
 </script>
 
